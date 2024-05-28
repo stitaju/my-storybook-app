@@ -14,6 +14,7 @@ const icons = [
 ];
 
 const Button = ({
+  children,
   label = 'Submit',
   variant = 'primary',
   size = 'md',
@@ -34,19 +35,7 @@ const Button = ({
       className={`btn btn-${variant} btn-${size} ${isLoading ? checkVariant(variant) : ''}`}
       onClick={() => {}}
     >
-      {prefixIcon && prefixIcon !== 'none' && (
-        <Icon
-          className={`${prefixIcon ?? 'icn-activity'}`}
-          variant="default"
-        />
-      )}
-      {label}
-      {suffixIcon && suffixIcon !== 'none' && (
-        <Icon
-          className={`${suffixIcon ?? 'icn-activity'}`}
-          variant="default"
-        />
-      )}
+      {children}
     </button>
   );
 };

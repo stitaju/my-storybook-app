@@ -1,19 +1,8 @@
-import Button from "./react-components/Button";
-
+import Button from "./react-components/ButtonDetailDocs";
+import Icon from "./react-components/Icons";
 export default {
-  title: "AiStudio/Components/Button/ Buttons",
+  title: "AiStudio/Components/Button/Buttons (Detail Docs)",
   component: Button,
-  parameters: {
-    docs: {
-      description: {
-        component: `
-\`\`\`jsx
-import Button from './{project_path_here}/react-components/Button';
-\`\`\`
-        `,
-      },
-    }
-  },
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -32,7 +21,19 @@ import Button from './{project_path_here}/react-components/Button';
   }
 }
 
-const Template = (args) => <Button {...args}></Button>
+const Template = ({ args, label = "Submit", prefixIcon, suffixIcon }) => <Button {...args}>{prefixIcon && prefixIcon !== 'none' && (
+  <Icon
+    className={`${prefixIcon ?? 'icn-activity'}`}
+    variant="default"
+  />
+)}
+  {label}
+  {suffixIcon && suffixIcon !== 'none' && (
+    <Icon
+      className={`${suffixIcon ?? 'icn-activity'}`}
+      variant="default"
+    />
+  )}</Button>;
 
 export const Primary = Template.bind({});
 Primary.args = {

@@ -1,0 +1,81 @@
+// Variables
+$base-font-size: 16px;
+$base-line-height: 1.5;
+$base-font-weight: 400;
+$base-font-family: 'Sen', sans-serif;
+
+$font-sizes: (
+  xs: 9px,
+  sm: 11px,
+  md: 16px,
+  lg: 18px,
+  xl: 24px,
+  xxl: 30px,
+  xxxl: 38px,
+  huge: 46px,
+  giant: 56px,
+  super: 68px,
+);
+
+$line-heights: (
+  xs: 20px,
+  sm: 22px,
+  md: 24px,
+  lg: 28px,
+  xl: 32px,
+  xxl: 38px,
+  xxxl: 46px,
+  huge: 54px,
+  giant: 64px,
+  super: 76px,
+);
+
+$font-weights: (
+  regular: 400,
+  bold: 700,
+);
+
+// Mixins
+@mixin font-size($size) {
+  font-size: map-get($font-sizes, $size);
+  line-height: map-get($line-heights, $size);
+}
+
+@mixin font-weight($weight) {
+  font-weight: map-get($font-weights, $weight);
+}
+
+@mixin typography($size: md, $weight: regular) {
+  @include font-size($size);
+  @include font-weight($weight);
+  font-family: $base-font-family;
+}
+
+// ---- Heading Bold Typography
+h1,
+.h1 {
+  @include typography(huge, bold);
+}
+
+h2,
+.h2 {
+  @include typography(xl, bold);
+}
+
+h3,
+.h3 {
+  @include typography(lg, bold);
+}
+
+h4,
+.h4 {
+  @include typography(sm, bold);
+}
+
+.text-primary {
+  color: rgb(61, 61, 255);
+}
+
+.text-muted {
+  color: gainsboro;
+}
