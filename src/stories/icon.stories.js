@@ -3,6 +3,10 @@ import Icon from "./react-components/Icons";
 export default {
   title: "AiStudio/Components/Icons",
   parameters: {
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/design/ZkPJwF003a3AGlGv1HBehK/Design-updates-file?node-id=5692-290826&t=utOJdufNLl3z6ZtI-4",
+    },
     docs: {
       description: {
         component: `

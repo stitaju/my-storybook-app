@@ -12,7 +12,11 @@ import Button from './{project_path_here}/react-components/Button';
 \`\`\`
         `,
       },
-    }
+    },
+    design: {
+      type: "figma",
+      url: "https://www.figma.com/proto/CDSUjP1zPGZyftGvkpi1AK/DS-Core-components?node-id=881-3625&t=SIl1pHsMfREd7fST-0&scaling=min-zoom&page-id=881%3A3624",
+    },
   },
   tags: ['autodocs'],
   argTypes: {
