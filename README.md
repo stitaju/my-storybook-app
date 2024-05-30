@@ -111,8 +111,9 @@ module.exports = {
 Add the Global CSS file in the .storybook/preview.js
 ```bash
 // .storybook/preview.js
+
 /** @type { import('@storybook/react').Preview } */
-// import ./your_global.css 
+// import ./your_global.css here
 ...
 ```
 
