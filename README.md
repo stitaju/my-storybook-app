@@ -100,11 +100,10 @@ module.exports = {
     "@storybook/addon-docs",
   ],
 
-  // Add this config for docs starts
+  // Add this 
   docs: {
     autodocs: 'tag',
   },
-  // Add this config for docs ends
 ```
 
 #### Note: For Global CSS 
