@@ -117,7 +117,7 @@ const config = {
 export default config;
 ```
 
-#### Note: For Global CSS 
+### Note: For Global CSS 
 Add the Global CSS file in the .storybook/preview.js
 ```bash
 /** @type { import('@storybook/react').Preview } */
