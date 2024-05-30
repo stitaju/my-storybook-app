@@ -38,6 +38,7 @@ By default, Storybook adds some example stories. Let's create a new story for a 
 
 First, create a simple React component:
 ```bash
+// src/components/Button.js
 import React from 'react';
 import PropTypes from 'prop-types';
 
