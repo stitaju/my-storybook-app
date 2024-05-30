@@ -93,9 +93,6 @@ module.exports = {
 ### 7. Using the Docs Addon
 ```bash
 // .storybook/main.js
-/** @type { import('@storybook/react-webpack5').StorybookConfig } */
-const config = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -108,14 +105,6 @@ const config = {
     autodocs: 'tag',
   },
   // Add this config for docs ends
-
-  framework: {
-    name: "@storybook/react-webpack5",
-    options: {},
-  },
-  staticDirs: ["../public"],
-};
-export default config;
 ```
 
 #### Note: For Global CSS 
@@ -124,18 +113,7 @@ Add the Global CSS file in the .storybook/preview.js
 // .storybook/preview.js
 /** @type { import('@storybook/react').Preview } */
 // import ./your_global.css 
-const preview = {
-  parameters: {
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
-  },
-};
-
-export default preview;
+...
 ```
 
 
