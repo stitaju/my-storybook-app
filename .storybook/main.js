@@ -12,6 +12,9 @@ const config = {
     "@chromatic-com/storybook",
     "@storybook/addon-designs",
   ],
+  docs: {
+    autodocs: 'tag',
+  },
   framework: {
     name: "@storybook/react-webpack5",
     options: {},

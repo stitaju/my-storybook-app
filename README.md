@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+# Storybook with React - Getting Started Guide
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
+Storybook is an open-source tool for developing UI components in isolation for React, Vue, and Angular. It helps you build, test, and document components. This guide will walk you through setting up Storybook in a React project from scratch.
 
-## Available Scripts
+## Prerequisites
+- Node.js (v12 or later)
+- npm (v6 or later) or yarn (v1.22.10 or later)
 
-In the project directory, you can run:
+## Steps to Setup Storybook in a React Project
 
-### `npm start`
+### 1. Create a New React Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+First, create a new React project using `create-react-app` if you don't have an existing project:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npx create-react-app my-storybook-app
+cd my-storybook-app
+```
+### 2. Install Storybook
+```bash
+npx create-react-app my-storybook-app
+```
+This command will configure Storybook in your project and create the following directory structure:
 
-### `npm test`
+my-storybook-app/ <br>
+├── .storybook/ <br>
+├── src/ <br>
+│   ├── stories/ <br>
+│   └── ...
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Running Storybook
+```bash
+npm run storybook
+```
+### 4. Adding a Story
+By default, Storybook adds some example stories. Let's create a new story for a React component.
 
-### `npm run build`
+First, create a simple React component:
+```bash
+import React from 'react';
+import PropTypes from 'prop-types';
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const Button = ({ label, onClick }) => (
+  <button onClick={onClick}>
+    {label}
+  </button>
+);
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Button.propTypes = {
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+};
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export default Button;
+```
+### 5. Creating a story for this component:
+```bash
+// src/stories/Button.stories.js
+import React from 'react';
+import Button from '../components/Button';
 
-### `npm run eject`
+export default {
+  title: 'Example/Button',
+  component: Button,
+};
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+const Template = (args) => <Button {...args} />;
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export const Primary = Template.bind({});
+Primary.args = {
+  label: 'Button',
+};
+```
+### 6. Adding Addons (Quite Helpful)
+Storybook supports a variety of addons to enhance your workflow. For instance, let's add the docs addon:
+```bash
+npm install @storybook/addon-docs --save-dev
+```
+Update .storybook/main.js to include the actions addon:
+```bash
+// .storybook/main.js
+module.exports = {
+  stories: ['../src/**/*.stories.js'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-docs',
+    'Add_Here',
+  ],
+};
+```
+### 7. Using the Docs Addon
+```bash
+/** @type { import('@storybook/react-webpack5').StorybookConfig } */
+const config = {
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
+    "@storybook/addon-docs",
+  ],
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  /* Add this starts config for docs */
+  docs: {
+    autodocs: 'tag',
+  },
+  /* Add this ends config for docs */
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {},
+  },
+  staticDirs: ["../public"],
+};
+export default config;
+```
 
-## Learn More
+#### Note: For Global CSS 
+Add the Global CSS file in the .storybook/preview.js
+```bash
+/** @type { import('@storybook/react').Preview } */
+/* import ./global.css */
+const preview = {
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
+    },
+  },
+};
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+export default preview;
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
