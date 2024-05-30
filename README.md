@@ -102,11 +102,11 @@ const config = {
     "@storybook/addon-docs",
   ],
 
-  /* Add this starts config for docs */
+  // Add this config for docs starts
   docs: {
     autodocs: 'tag',
   },
-  /* Add this ends config for docs */
+  // Add this config for docs ends
 
   framework: {
     name: "@storybook/react-webpack5",
@@ -117,11 +117,11 @@ const config = {
 export default config;
 ```
 
-### Note: For Global CSS 
+#### Note: For Global CSS 
 Add the Global CSS file in the .storybook/preview.js
 ```bash
 /** @type { import('@storybook/react').Preview } */
-/* import ./global.css */
+// import ./your_global.css 
 const preview = {
   parameters: {
     controls: {
@@ -134,7 +134,6 @@ const preview = {
 };
 
 export default preview;
-
 ```
 
 
