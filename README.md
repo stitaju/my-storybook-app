@@ -92,6 +92,7 @@ module.exports = {
 ```
 ### 7. Using the Docs Addon
 ```bash
+// .storybook/main.js
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
@@ -120,6 +121,7 @@ export default config;
 #### Note: For Global CSS 
 Add the Global CSS file in the .storybook/preview.js
 ```bash
+// .storybook/preview.js
 /** @type { import('@storybook/react').Preview } */
 // import ./your_global.css 
 const preview = {
