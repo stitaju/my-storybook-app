@@ -19,7 +19,7 @@ cd my-storybook-app
 ```
 ### 2. Install Storybook
 ```bash
-npx create-react-app my-storybook-app
+npx sb init
 ```
 This command will configure Storybook in your project and create the following directory structure:
 
